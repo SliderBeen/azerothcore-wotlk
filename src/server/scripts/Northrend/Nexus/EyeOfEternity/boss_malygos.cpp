@@ -1062,6 +1062,46 @@ public:
     };
 };
 
+class npc_arcane_overload : public CreatureScript
+{
+public:
+    npc_arcane_overload() : CreatureScript("npc_arcane_overload") { }
+
+    CreatureAI* GetAI(Creature* pCreature) const override
+    {
+        return GetEyeOfEternityAI<npc_arcane_overloadAI>(pCreature);
+    }
+
+    struct npc_arcane_overloadAI : public NullCreatureAI
+    {
+        npc_arcane_overloadAI(Creature* pCreature) : NullCreatureAI(pCreature)
+        {
+            CheckTimer = 45000;
+            ScaleSpeed = me->GetObjectScale() / CheckTimer;
+        }
+
+        uint16 CheckTimer;
+        float ScaleSpeed;
+    
+        void UpdateAI(uint32 diff) override
+        {
+            if (CheckTimer)
+            {
+                if (CheckTimer <= diff)
+                {
+                    me->SetObjectScale(6.0);
+                    CheckTimer = 45000;
+                }
+                else
+                {
+                    CheckTimer -= diff;
+                    me->SetObjectScale(ScaleSpeed * CheckTimer);
+                }
+            }
+        }
+    };
+};
+
 class npc_nexus_lord : public CreatureScript
 {
 public:
@@ -1551,6 +1591,7 @@ void AddSC_boss_malygos()
 {
     new boss_malygos();
     new npc_power_spark();
+    new npc_arcane_overload();
     new npc_vortex_ride();
     new npc_alexstrasza();
     new go_the_focusing_iris();

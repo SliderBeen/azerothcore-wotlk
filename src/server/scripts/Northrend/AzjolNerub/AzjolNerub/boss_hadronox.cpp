@@ -192,7 +192,7 @@ public:
                     break;
                 case EVENT_HADRONOX_LEECH:
                     me->CastSpell(me, SPELL_LEECH_POISON, false);
-                    events.ScheduleEvent(EVENT_HADRONOX_LEECH, 12000);
+                    events.ScheduleEvent(EVENT_HADRONOX_LEECH, 16000);
                     break;
                 case EVENT_HADRONOX_GRAB:
                     me->CastSpell(me, SPELL_WEB_GRAB, false);
