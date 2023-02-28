@@ -1699,12 +1699,12 @@ public:
 # npc_wormhole
 ######*/
 
-#define GOSSIP_ENGINEERING1   "Borean Tundra"
-#define GOSSIP_ENGINEERING2   "Howling Fjord"
-#define GOSSIP_ENGINEERING3   "Sholazar Basin"
-#define GOSSIP_ENGINEERING4   "Icecrown"
-#define GOSSIP_ENGINEERING5   "Storm Peaks"
-#define GOSSIP_ENGINEERING6   "Underground..."
+#define GOSSIP_ENGINEERING1   "北风苔原"
+#define GOSSIP_ENGINEERING2   "嚎风峡湾"
+#define GOSSIP_ENGINEERING3   "索拉查盆地"
+#define GOSSIP_ENGINEERING4   "冰冠冰川"
+#define GOSSIP_ENGINEERING5   "风暴峭壁"
+#define GOSSIP_ENGINEERING6   "地下..."
 
 enum WormholeSpells
 {
@@ -1747,8 +1747,8 @@ public:
     {
         if (creature->IsSummon())
         {
-            if (player == creature->ToTempSummon()->GetSummonerUnit())
-            {
+            //if (player == creature->ToTempSummon()->GetSummonerUnit())
+            //{
                 AddGossipItemFor(player, GOSSIP_ICON_CHAT, GOSSIP_ENGINEERING1, GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 1);
                 AddGossipItemFor(player, GOSSIP_ICON_CHAT, GOSSIP_ENGINEERING2, GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 2);
                 AddGossipItemFor(player, GOSSIP_ICON_CHAT, GOSSIP_ENGINEERING3, GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 3);
@@ -1759,7 +1759,7 @@ public:
                     AddGossipItemFor(player, GOSSIP_ICON_CHAT, GOSSIP_ENGINEERING6, GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 6);
 
                 SendGossipMenuFor(player, TEXT_WORMHOLE, creature);
-            }
+           // }
         }
 
         return true;
